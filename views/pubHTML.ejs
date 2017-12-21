@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			
+			<a class="navbar-brand" href="/"><%= title%></a>
+		</div>
+
+		<ul class="nav navbar-nav navbar-right">
+			<% if(judge.isShowlog){ %>
+			<li>
+				<a href="#">欢迎你，用户<%= currentUser%></a>
+			</li>
+			<% } %>
+			<% if(judge.isShowout){ %>
+			<li class="out">
+				<a href="/out">注销</a>
+			</li>
+			<% } %>
+			<% if(judge.isShowreg){ %>
+			<li class="register">
+				<a href="/register">注册</a>
+			</li>
+			<% } %>
+		</ul>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container-fluid -->
+</nav>

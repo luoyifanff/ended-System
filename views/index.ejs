@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css"/>
+    <style type="text/css">
+    	td{width: 300px;}
+    </style>
+  </head>
+  <body style="background: #e9e9e9;">
+  	<%- include('./pubHTML.ejs',{title:title,judge:judge,currentUser:currentUser})%>
+  	<div class="page-header container">
+  		<h2>后台管理系统<small style="margin-left: 50px;"><a href="/goods">新增商品</a></small></h2>
+  	</div>
+
+  	<table class="" style="text-align: center;margin: 0 auto"border="1">
+  		<tr style="background: #666;color: white;" height="40">
+  			<td>商品名</td>
+  			<td>价格</td>
+  			<td>操作</td>
+  		</tr>
+  		
+		<% for(var i=0;i<goodslist.length;i++){%>
+			<tr height="50">
+	  			<td><%= goodslist[i].goodsname%></td>
+	  			<td><%= goodslist[i].price%></td>
+	  			<td>
+	  				<a class="btn btn-info" href="/goods/detail?id=<%= goodslist[i]._id%>" role="button">查看</a>
+	  				<a class="btn btn-success" href="/goods/update?id=<%= goodslist[i]._id%>" role="button">修改</a>
+	  				<a class="btn btn-danger" href="/goods/delete?id=<%= goodslist[i]._id%>&path=<%= goodslist[i].imgpath%>" role="button">删除</a>
+	  			</td>
+			</tr>
+		<%}%>	
+  </table>
+	<nav class='turnPage' style="display: flex;justify-content: center;margin-top: 30px;">
+		<ul class="pagination" >
+		<% for(var j=0;j<Math.ceil(total/5);j++){ %>
+			<% if(page == j+1){%>
+				<li class="active">
+					<a href="/?skip=<%=j*5%>&page=<%= j+1%>"  ><%= j+1%> <span class="sr-only">(current)</span></a>
+				</li>
+			<%}else{%>
+				<li>
+					<a href="/?skip=<%=j*5%>&page=<%= j+1%>"><%= j+1%> <span class="sr-only">(current)</span></a>
+				</li>
+			<%}%>
+			
+		<% }%>		
+		</ul>
+	</nav>
+  </body>
+<script src="/javascripts/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="/javascripts/index.js" type="text/javascript" charset="utf-8"></script>-->
+</html>

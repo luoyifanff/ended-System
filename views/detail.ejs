@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>商品详情页</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css"/>
+	<style type="text/css">
+		.box{
+			width: 700px;
+			margin: 0 auto;
+			display: flex;
+			background: #C0A16B;
+			color: #000;			
+		}
+		img{
+			width: 300px;
+			border:1px solid #245269;
+			margin-right: 40px;
+		}
+		p{
+			margin: 10px 0;
+		}
+		.price{
+			margin-top: 26px;
+			color: #f40
+		}
+		i{font-size: 20px;}
+	</style>
+</head>
+<body style="background: #f0f0f0;">
+	
+	<%- include('./pubHTML.ejs',{title:'返回首页',judge:judge,currentUser:currentUser})%>
+	<div class="page-header container" style="border-bottom: 2px solid #204D74;">
+		<h1>商品详情 <small>致力美食</small></h1>
+	</div>
+	<div class=" box">
+		<div>
+			<img src="<%= imgpath%>"/>
+		</div>
+		<div class="caption" style="position: relative;width: 300px;">
+			<h3><%= goodname%></h3>
+			<p><%= describe%></p>
+			<div class="art" style="position: absolute;bottom: 0;">
+				<p class="price">¥<i><%= price%></i></p>
+				<p>
+					<a href="/goods/detail/update?id=<%= id%>" class="btn btn-primary" role="button">修改</a>
+					<a href="/goods/detail/delete?id=<%= id%>&path=<%= imgpath%>" class="btn btn-default" role="button">删除</a>
+				</p>
+			</div>
+		</div>	
+	</div>
+</body>
+</html>
